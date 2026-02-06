@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class='card'>
+<form method='POST'>
+<h2>Book Your Stay</h2>
+
+<label>Check-in</label>
+<input type='date' name='checkin' required>
+
+<label>Check-out</label>
+<input type='date' name='checkout' required>
+
+<label>Room Type</label>
+<select name='room_type' class='scroll-select'>
+<option>Full AC</option>
+<option>Non AC</option>
+<option>Single Bed</option>
+<option>Double Bed</option>
+<option>Suite</option>
+<option>Deluxe</option>
+</select>
+
+<label>Rating</label>
+<select name='rating' class='scroll-select'>
+<option>5</option>
+<option>4.5</option>
+<option>4</option>
+<option>3</option>
+</select>
+
+<label>Budget</label>
+<select name='price_range' class='scroll-select'>
+<option>2000-5000</option>
+<option>5000-8000</option>
+<option>8000-12000</option>
+<option>12000-20000</option>
+<option>20000-50000</option>
+</select>
+
+<button type="submit">Confirm Booking</button>
+
+</form>
+</div>
+
+</body>
+</html>

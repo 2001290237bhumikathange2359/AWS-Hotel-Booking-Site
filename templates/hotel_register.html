@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hotel Registration - RoyalStay</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="logo">
+        <a href="/" style="text-decoration:none;color:white;">
+            RoyalStay Hotels
+        </a>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+
+        <!-- Login Dropdown -->
+        <div class="dropdown">
+            <a class="nav-btn">Login ▼</a>
+            <div class="dropdown-content">
+                <a href="/login/user">User Login</a>
+                <a href="/login/admin">Admin Login</a>
+                <a href="/login/hotel">Hotel Login</a>
+            </div>
+        </div>
+
+        <!-- Registration Dropdown -->
+        <div class="dropdown">
+            <a class="nav-btn">Register ▼</a>
+            <div class="dropdown-content">
+                <a href="/register">User Register</a>
+                <a href="/hotel_register">Hotel Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- REGISTRATION CARD -->
+<div class="card">
+    <h2>Register Your Hotel</h2>
+
+    {% if message %}
+        <p style="color:red; font-weight:bold;">
+            {{ message }}
+        </p>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="hotel_name" placeholder="Hotel Name" required>
+        <input type="text" name="owner_name" placeholder="Owner Name" required>
+        <input type="text" name="username" placeholder="Login Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+        <button type="submit">Register Hotel</button>
+    </form>
+
+    <p style="margin-top:15px;">
+        Already registered?
+        <a href="/login/hotel">Login here</a>
+    </p>
+</div>
+
+</body>
+</html>

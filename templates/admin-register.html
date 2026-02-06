@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Registration</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+    <!-- ===== NAVBAR (Same style as Home) ===== -->
+    <nav class="navbar">
+        <div class="logo">Hotel<span>Admin</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#">Hotels</a></li>
+            <li><a href="#">Bookings</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ===== HERO STYLE HEADER ===== -->
+<div class="card">
+    <section class="hero-admin">
+        <div class="hero-overlay">
+            <h1>Admin Registration</h1>
+            <p>Create an account to manage hotels, bookings and users</p>
+        </div>
+    </section>
+
+    <!-- ===== REGISTRATION FORM ===== -->
+    <section class="form-section">
+        <div class="form-container">
+            <h2>Create Admin Account</h2>
+            <form id="adminRegisterForm">
+
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="Enter full name" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="Enter email" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Admin ID</label>
+                    <input type="text" id="adminId" placeholder="Enter admin ID" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required />
+                </div>
+
+                <div class="input-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm password" required />
+                </div>
+
+                <button type="submit" class="btn">Register Admin</button>
+                <p class="login-link">Already registered? <a href="admin-login.html">Login here</a></p>
+
+                <p id="message"></p>
+            </form>
+        </div>
+    </section>
+</div>
+    <script src="admin-register.js"></script>
+</body>
+</html>

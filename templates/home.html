@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/static/style.css">
+
+    <style>
+        .offline {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 160px;
+            box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+            border-radius: 6px;
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .dropdown-content a:hover {
+            background: #f2f2f2;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <a href="/" style="text-decoration:none;color:white;">
+            RoyalStay Hotels
+        </a>
+    </div>
+
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+
+        {% if session.get('user') %}
+            <div class="dropdown">
+                <a class="nav-btn">Account ▼</a>
+                <div class="dropdown-content">
+                    <a href="/logout">Logout ({{ session['role'] }})</a>
+                </div>
+            </div>
+        {% else %}
+
+            <div class="dropdown">
+                <a class="nav-btn">Login ▼</a>
+                <div class="dropdown-content">
+                    <a href="/login/user">User Login</a>
+                    <a href="/login/admin">Admin Login</a>
+                    <a href="/login/hotel">Hotel Login</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <a class="nav-btn">Register ▼</a>
+                <div class="dropdown-content">
+                    <a href="/register">User Register</a>
+                    <a href="/hotel_register">Hotel Register</a>
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Find Your Perfect Stay</h1>
+    <p>Luxury hotels at the best prices</p>
+    <a href="#hotels" class="btn-primary">Explore Hotels</a>
+  </div>
+</section>
+  
+<section class="image-strip">
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+  <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd">
+  <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb">
+  <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85">
+</section>
+<section class="hotel-list" id="hotels">
+  <h2>Popular Hotels</h2>
+
+  <div class="hotel-grid">
+
+    <div class="hotel-card">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945">
+      <div class="hotel-info">
+        <h3>Taj Luxury Stay</h3>
+        <p>⭐ 4.7 | Delhi</p>
+        <p class="price">₹5,200 / night</p>
+        <a href="login.html"><button class="book-btn">Book Now</button></a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b">
+      <div class="hotel-info">
+        <h3>Sea View Resort</h3>
+        <p>⭐ 4.5 | Goa</p>
+        <p class="price">₹6,800 / night</p>
+        <a href="login.html"><button class="book-btn">Book Now</button></a>
+      </div>
+    </div>
+
+    <div class="hotel-card">
+      <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa">
+      <div class="hotel-info">
+        <h3>Mountain Retreat</h3>
+        <p>⭐ 4.6 | Manali</p>
+        <p class="price">₹4,300 / night</p>
+        <a href="login.html" class="book-btn"><button type="submit" onclick="goHome()">Book Now</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="destinations">
+  <h2>Top Destinations</h2>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
+      <span>Goa</span>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1548013146-72479768bada">
+      <span>Jaipur</span>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad">
+      <span>Manali</span>
+    </div>
+    <div class="dest-card">
+      <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c">
+      <span>Mumbai</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- FLASH MESSAGES -->
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="card" style="color:red;">
+          {{ msg }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+
+<!-- HOTELS -->
+{% if hotels %}
+    {% for hotel in hotels %}
+    <div class="card {% if hotel.get('online') == False %}offline{% endif %}">
+        <h3>{{ hotel.hotel_name }}</h3>
+        <p>⭐ {{ hotel.rating }}</p>
+        <p>{{ hotel.room_type }}</p>
+        <p>₹{{ hotel.price }}</p>
+
+        {% if hotel.get('online', True) %}
+            <a href="{{ url_for('booking', hotel_id=hotel.hotel_id) }}">
+                <button>Book Now</button>
+            </a>
+        {% else %}
+            <button disabled>Currently Offline</button>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% else %}
+    <div class="card">
+        <h3>No hotels available</h3>
+    </div>
+{% endif %}
+
+<footer>
+  <p>© 2026 RoyalStay Hotels | All Rights Reserved</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+</body>
+</html>
