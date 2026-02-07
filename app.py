@@ -163,10 +163,10 @@ def logout():
 # ================= DASHBOARDS =================
 @app.route('/user_dashboard')
 def user_dashboard():
+    state = request.args.get("state")
     if 'role' not in session or session['role'] != 'user':
         return redirect('/')
     return render_template('dashboard_user.html')
-
 
 @app.route('/admin_dashboard')
 def admin_dashboard():
@@ -186,6 +186,7 @@ def hotel_dashboard():
 # ================= BOOKING =================
 @app.route('/booking/<hotel_id>', methods=['GET', 'POST'])
 def booking(hotel_id):
+    hotel = request.args.get("hotel")
 
     if 'user' not in session or session['role'] != 'user':
         flash("Please login first to book a hotel.")
@@ -215,7 +216,6 @@ def booking(hotel_id):
         send_notification(SNS_ARN, f"Booking Confirmed! ID: {booking_id}")
 
         return redirect(f'/confirmation/{booking_id}')
-
     return render_template('booking.html', hotel=hotel)
 
 
