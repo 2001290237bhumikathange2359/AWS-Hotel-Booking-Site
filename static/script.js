@@ -40,3 +40,4 @@ function submitBooking(hotelId){
 function updateHotelProfile(){
     document.getElementById("hotelUpdateForm").submit();
 }
+

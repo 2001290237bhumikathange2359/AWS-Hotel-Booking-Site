@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>HOME</title>
     <link rel="stylesheet" href="/static/style.css">
 
     <style>
@@ -162,7 +163,7 @@
 {% with messages = get_flashed_messages() %}
   {% if messages %}
     {% for msg in messages %}
-      <div class="card" style="color:red;">
+      <div class="card" style="color:rgb(248, 87, 87);">
           {{ msg }}
       </div>
     {% endfor %}

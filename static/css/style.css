@@ -84,7 +84,7 @@ button:hover {
 }
 
 .card {
-    background: white;
+    background: linear-gradient(90deg, #003566, #005f73);
     width: 300px;
     margin: 20px auto;
     padding: 20px;
@@ -188,8 +188,9 @@ input, select {
 }
 
 /* CONTACT CARD */
-.contact-card {
-    background: linear-gradient(135deg, #0077b6, #0096c7);
+.contact-card 
+{
+    background: linear-gradient(90deg, #003566, #005f73);
     color: white;
 }
 footer {
@@ -220,8 +221,7 @@ body {
   text-decoration: none;
 }
 .hero-about {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('https://images.unsplash.com/photo-1501117716987-c8e1ecb2105b');
+    background: linear-gradient(90deg, #003566, #005f73);
     background-size: cover;
     background-position: center;
     color: white;

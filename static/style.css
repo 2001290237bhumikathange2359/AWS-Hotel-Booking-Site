@@ -90,7 +90,7 @@ button:hover {
 
 /* CARD */
 .card {
-    background: white;
+    background: linear-gradient(90deg, #003566, #005f73);
     width: 90%;
     max-width: 420px;              /* responsive */
     margin: 20px auto;
@@ -125,8 +125,7 @@ input, select {
     border-radius: 10px;
 }
 .hero-about {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                url('https://images.unsplash.com/photo-1501117716987-c8e1ecb2105b');
+    background: linear-gradient(90deg, #003566, #005f73);
     background-size: cover;
     background-position: center;
     color: white;
@@ -224,8 +223,9 @@ input, select {
     margin-bottom: 10px;
 }
 
-.contact-card {
-    background: linear-gradient(135deg, #0077b6, #0096c7);
+.contact-card 
+{
+    background: linear-gradient(90deg, #003566, #005f73);
     color: white;
 }
 
