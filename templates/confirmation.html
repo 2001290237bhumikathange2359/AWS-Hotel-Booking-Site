@@ -23,6 +23,15 @@
     <br><br>
     <a href="/" class="btn">Back to Home</a>
 </div>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <div class="card" style="color: green;">
+        {{ msg }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 </body>
 </html>

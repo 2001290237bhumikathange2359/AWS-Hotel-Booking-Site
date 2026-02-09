@@ -78,7 +78,6 @@
                 <div class="dropdown-content">
                     <a href="/register">User Register</a>
                     <a href="/hotel_register">Hotel Register</a>
-                    <a href="/admin_register">Admin Register</a>
 
                 </div>
             </div>
@@ -141,11 +140,10 @@
 <h2 class="title">Top Destinations</h2>
 
 <div class="destination-grid">
-  <div class="destination-card" onclick="go('goa')">
+   <a href="/dashboard_user?state=goa" class="destination-card">
     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e">
-    <h3>Goa</h3>
-  </div>
-
+    <span>Goa</span>
+  </a>
   <div class="destination-card" onclick="go('jaipur')">
     <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41">
     <h3>Jaipur</h3>
@@ -162,42 +160,6 @@
   </div>
 </div>
 
-
-<!-- FLASH MESSAGES -->
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for msg in messages %}
-      <div class="card" style="color:rgb(248, 87, 87);">
-          {{ msg }}
-      </div>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-
-
-<!-- HOTELS -->
-{% if hotels %}
-    {% for hotel in hotels %}
-    <div class="card {% if hotel.get('online') == False %}offline{% endif %}">
-        <h3>{{ hotel.hotel_name }}</h3>
-        <p>⭐ {{ hotel.rating }}</p>
-        <p>{{ hotel.room_type }}</p>
-        <p>₹{{ hotel.price }}</p>
-
-        {% if hotel.get('online', True) %}
-            <a href="{{ url_for('booking', hotel_id=hotel.hotel_id) }}">
-                <button>Book Now</button>
-            </a>
-        {% else %}
-            <button disabled>Currently Offline</button>
-        {% endif %}
-    </div>
-    {% endfor %}
-{% else %}
-    <div class="card">
-        <h3>No hotels available</h3>
-    </div>
-{% endif %}
 
 <footer>
   <p>© 2026 RoyalStay Hotels | All Rights Reserved</p>
