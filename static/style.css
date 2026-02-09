@@ -409,11 +409,12 @@ body {
 .book-btn {
   width: 100%;
   padding: 10px;
-  background: #007bff;
+  background: #ff5a5f;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .book-btn:hover {
