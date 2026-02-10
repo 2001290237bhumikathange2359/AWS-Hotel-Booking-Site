@@ -1,5 +1,4 @@
 Flask
 boto3
 flask-session
-qrcode
-pillow
+qrcode[pil]
