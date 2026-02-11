@@ -8,7 +8,7 @@ from boto3.dynamodb.conditions import Attr
 
 app = Flask(__name__)
 app.secret_key = "hotel_secret_key"
-SNS_ARN = "arn:aws:sns:us-east-1:051826710082:aws_hotel_booking_site"
+SNS_ARN = "arn:aws:sns:us-east-1:381492052142:aws_hotel_booking_topic"
 
 
 # ================= HOME =================
